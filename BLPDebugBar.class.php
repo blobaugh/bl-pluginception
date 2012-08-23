@@ -22,7 +22,7 @@ function blp_load_debug_bar($panels) {
                                 
                                 // Custom styling for the debug bar output
 				wp_enqueue_style( 'blp-debug-bar-css', BLP_PLUGIN_URL . 'css/debug-bar.css' );
-                                
+                               
                                 // Action hook called when new dbug info is submitted
                                 add_action( 'blp_debug', array( &$this, 'logDebug' ), 10, 3 );
                                 

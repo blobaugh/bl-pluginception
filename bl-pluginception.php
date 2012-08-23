@@ -22,9 +22,10 @@ require_once( BLP_PLUGIN_DIR . 'BLPDebugBar.class.php' );
  *      Plugin Display => URI of zip archive
  */
 $plugin_templates = array(
-    "Otto's (otto42) Minimal Starter" => 'http://localhost/otto-minimal-plugin-template.zip',
-    "Ben Lobaugh's (blobaugh) Starter" => 'http://localhost/bl-plugin-template.zip'
+    "Otto's (otto42) Minimal Starter" => 'https://github.com/blobaugh/otto-minimal-plugin-template/zipball/master',
+    "Ben Lobaugh's (blobaugh) Starter" => 'https://github.com/blobaugh/bl-plugin-template/zipball/master'
 );
+$plugin_templates = apply_filters( 'blp_plugin_templates', $plugin_templates );
 
 
 add_action('admin_menu', 'blp_admin_add_page');
@@ -159,14 +160,14 @@ function blp_create_plugin() {
                  If the template requires setup supply a bootstrap file in the archive", 'warning' ); 
     }
     
-    $plugin_template_base_file = trailingslashit( $new_plugin_folder ) . '/' . basename( $temp_plugin_folder ) . '.php';
-    $new_plugin_template_base_file = trailingslashit( $new_plugin_folder ) . '/' . $_POST['pluginception_slug'] . '.php';
-    $res = $wp_filesystem->move( $plugin_template_base_file,
-                                 $new_plugin_template_base_file );
-    if( !$res ) {
-        blp_log( "Unable to create new base file", "Could not move $plugin_template_base_file to $new_plugin_template_base_file ", 'error' );
-        $error = true;
-    }
+//    $plugin_template_base_file = trailingslashit( $new_plugin_folder ) . '/' . basename( $temp_plugin_folder ) . '.php';
+//    $new_plugin_template_base_file = trailingslashit( $new_plugin_folder ) . '/' . $_POST['pluginception_slug'] . '.php';
+//    $res = $wp_filesystem->move( $plugin_template_base_file,
+//                                 $new_plugin_template_base_file );
+//    if( !$res ) {
+//        blp_log( "Unable to create new base file", "Could not move $plugin_template_base_file to $new_plugin_template_base_file ", 'error' );
+//        $error = true;
+//    }
     
     $res = $wp_filesystem->delete( $bootstrap_file );
     if( !$res ) {
